@@ -1,0 +1,63 @@
+<h3>Singly Linked List</h3>
+<p>This linear time data structure is comprised of 0-many nodes that store a reference to the node that comes after
+  them. Basic insert actions use constant time while all other operations use linear time.</p>
+<ul class="list-group list-group-horizontal">
+  <li *ngFor="let node of nodes(); let i = index;"
+    class="list-group-item d-flex justify-content-between align-items-center">
+    {{ node.data }}
+    <span class="badge badge-primary badge-pill mx-4">{{ i }}</span>
+    <svg class="bi bi-arrow-right-short" width="2em" height="2em" viewBox="0 0 16 16" fill="currentColor"
+      xmlns="http://www.w3.org/2000/svg">
+      <path fill-rule="evenodd"
+        d="M8.146 4.646a.5.5 0 01.708 0l3 3a.5.5 0 010 .708l-3 3a.5.5 0 01-.708-.708L10.793 8 8.146 5.354a.5.5 0 010-.708z"
+        clip-rule="evenodd" />
+      <path fill-rule="evenodd" d="M4 8a.5.5 0 01.5-.5H11a.5.5 0 010 1H4.5A.5.5 0 014 8z" clip-rule="evenodd" />
+    </svg>
+  </li>
+  <li class="list-group-item d-flex justify-content-between align-items-center">
+    <span class="badge badge-danger badge-pill mx-4">next: null</span>
+  </li>
+</ul>
+
+<form [formGroup]="singlyLinkedListFormGroup" class="mt-4">
+  <ngb-alert *ngIf="errorMessage && errorMessage.length" type="danger" [dismissible]="false">
+    {{ errorMessage }}
+  </ngb-alert>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="inputIndex">Index</label>
+      <input formControlName="index" type="text" class="form-control" id="inputIndex">
+    </div>
+    <div class="form-group col-md-6">
+      <label for="inputData">Data</label>
+      <input formControlName="data" type="text" class="form-control" id="inputData">
+    </div>
+  </div>
+  <div class="d-flex justify-content-between align-items-center">
+    <div class="d-flex flex-column align-items-center">
+      <button (click)="fetchData()" class="btn btn-success">Fetch Data</button>
+      <p class="m-0">O(n)</p>
+    </div>
+    <div class="d-flex flex-column align-items-center">
+      <button (click)="insertFirst()" class="btn btn-primary">Insert at Beginning</button>
+      <p class="m-0">O(1)</p>
+    </div>
+    <div class="d-flex flex-column align-items-center">
+      <button (click)="insertLast()" class="btn btn-primary">Insert at End</button>
+      <p class="m-0">O(1)</p>
+    </div>
+    <div class="d-flex flex-column align-items-center">
+      <button (click)="insertBefore()" class="btn btn-primary">Insert Before</button>
+      <p class="m-0">O(n)</p>
+    </div>
+    <div class="d-flex flex-column align-items-center">
+      <button (click)="insertAfter()" class="btn btn-primary">Insert After</button>
+      <p class="m-0">O(n)</p>
+    </div>
+    <div class="d-flex flex-column align-items-center">
+      <button (click)="remove()" class="btn btn-danger">Remove</button>
+      <p class="m-0">O(n)</p>
+    </div>
+  </div>
+  <app-logger type="singlyLinkedList"></app-logger>
+</form>

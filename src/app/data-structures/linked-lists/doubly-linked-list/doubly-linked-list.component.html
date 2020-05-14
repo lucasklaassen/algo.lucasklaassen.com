@@ -1,11 +1,23 @@
-<h3>Singly Linked List</h3>
+<h3>Doubly Linked List</h3>
 <p>This linear time data structure is comprised of 0-many nodes that store a reference to the node that comes after
-  them. Basic insert actions use constant time while all other operations use linear time.</p>
+  them as well as the node that comes before them. Basic insert actions use constant time while all other operations use
+  linear time. The trade-off with a doubly linked list is that you can easily reverse the list but offer up consuming
+  more memory.</p>
 <ul class="list-group list-group-horizontal">
+  <li class="list-group-item d-flex justify-content-between align-items-center">
+    <span class="badge badge-danger badge-pill mx-4">prev: null</span>
+  </li>
   <li *ngFor="let node of nodes(); let i = index;"
     class="list-group-item d-flex justify-content-between align-items-center">
-    {{ node.data }}
-    <span class="badge badge-primary badge-pill mx-4">{{ i }}</span>
+    <svg class="bi bi-arrow-left-short" width="2em" height="2em" viewBox="0 0 16 16" fill="currentColor"
+      xmlns="http://www.w3.org/2000/svg">
+      <path fill-rule="evenodd"
+        d="M7.854 4.646a.5.5 0 010 .708L5.207 8l2.647 2.646a.5.5 0 01-.708.708l-3-3a.5.5 0 010-.708l3-3a.5.5 0 01.708 0z"
+        clip-rule="evenodd" />
+      <path fill-rule="evenodd" d="M4.5 8a.5.5 0 01.5-.5h6.5a.5.5 0 010 1H5a.5.5 0 01-.5-.5z" clip-rule="evenodd" />
+    </svg>
+    <span class="mx-2">{{ node.data }}</span>
+    <span class="badge badge-primary badge-pill mx-2">{{ i }}</span>
     <svg class="bi bi-arrow-right-short" width="2em" height="2em" viewBox="0 0 16 16" fill="currentColor"
       xmlns="http://www.w3.org/2000/svg">
       <path fill-rule="evenodd"
@@ -15,11 +27,11 @@
     </svg>
   </li>
   <li class="list-group-item d-flex justify-content-between align-items-center">
-    <span class="badge badge-danger badge-pill mx-4">null</span>
+    <span class="badge badge-danger badge-pill mx-4">next: null</span>
   </li>
 </ul>
 
-<form [formGroup]="singlyLinkedListFormGroup" class="mt-4">
+<form [formGroup]="doublyLinkedListFormGroup" class="mt-4">
   <ngb-alert *ngIf="errorMessage && errorMessage.length" type="danger" [dismissible]="false">
     {{ errorMessage }}
   </ngb-alert>
@@ -59,17 +71,8 @@
       <p class="m-0">O(n)</p>
     </div>
   </div>
-  <div class="card mt-4">
-    <div class="card-body" style="white-space: pre-line;">
-      <div class="d-flex justify-content-between align-items-center">
-        <p class="m-0">Results:</p>
-        <button (click)="clearResults()" class="btn btn-info">Clear</button>
-      </div>
-      <ol class="m-0 p-3">
-        <li class="m-2" *ngFor="let result of results">
-          {{ result }}
-        </li>
-      </ol>
-    </div>
-  </div>
+  <p class="mt-4 mb-0"><strong>Note:</strong> If a pointer to a node is supplied when inserting before or after it, both
+    actions
+    become constant instead of linear with a doubly linked list.</p>
+  <app-logger type="doublyLinkedList"></app-logger>
 </form>

@@ -2,27 +2,28 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { SinglyLinkedList } from 'src/app/core/models/linked-list/singly-linked-list.model';
 import { SinglyLinkedListNode } from 'src/app/core/models/linked-list/singly-linked-list-node.model';
+import { LoggerService } from 'src/app/core/services/logger.service';
 
 @Component({
-  selector: 'app-linked-list',
-  templateUrl: './linked-list.component.html',
-  styleUrls: ['./linked-list.component.scss'],
+  selector: 'app-singly-linked-list',
+  templateUrl: './singly-linked-list.component.html',
+  styleUrls: ['./singly-linked-list.component.scss'],
 })
-export class LinkedListComponent implements OnInit {
+export class SinglyLinkedListComponent implements OnInit {
   public errorMessage: string;
   public results: Array<string> = [];
   public singlyLinkedListFormGroup: FormGroup;
   public singlyLinkedList = new SinglyLinkedList<string>();
 
-  constructor(private formBuiler: FormBuilder) {}
+  constructor(
+    private formBuiler: FormBuilder,
+    private loggerService: LoggerService
+  ) {}
 
   ngOnInit(): void {
     this.singlyLinkedListFormGroup = this.formBuiler.group({
       index: this.formBuiler.control(''),
       data: this.formBuiler.control(''),
-    });
-    this.singlyLinkedListFormGroup.valueChanges.subscribe((results) => {
-      console.log(results);
     });
   }
 
@@ -45,7 +46,8 @@ export class LinkedListComponent implements OnInit {
     }
     try {
       const node = this.singlyLinkedList.fetch(index);
-      this.results.push(
+      this.loggerService.log(
+        'singlyLinkedList',
         `index: ${index} returned the following Data: ${node.data}`
       );
     } catch (error) {
@@ -59,7 +61,15 @@ export class LinkedListComponent implements OnInit {
     if (!this.validatePresence(data, 'Data')) {
       return;
     }
-    this.singlyLinkedList.addFirst(data);
+    try {
+      this.singlyLinkedList.addFirst(data);
+      this.loggerService.log(
+        'singlyLinkedList',
+        `data: ${data} was added to the beginning of the list.`
+      );
+    } catch (error) {
+      this.errorMessage = error.message;
+    }
     this.singlyLinkedListFormGroup.reset({});
   }
 
@@ -68,7 +78,15 @@ export class LinkedListComponent implements OnInit {
     if (!this.validatePresence(data, 'Data')) {
       return;
     }
-    this.singlyLinkedList.addLast(data);
+    try {
+      this.singlyLinkedList.addLast(data);
+      this.loggerService.log(
+        'singlyLinkedList',
+        `data: ${data} was added to the end of the list.`
+      );
+    } catch (error) {
+      this.errorMessage = error.message;
+    }
     this.singlyLinkedListFormGroup.reset({});
   }
 
@@ -81,7 +99,15 @@ export class LinkedListComponent implements OnInit {
     ) {
       return;
     }
-    this.singlyLinkedList.addBefore(data, index);
+    try {
+      this.singlyLinkedList.addBefore(data, index);
+      this.loggerService.log(
+        'singlyLinkedList',
+        `data: ${data} was added before index: ${index}`
+      );
+    } catch (error) {
+      this.errorMessage = error.message;
+    }
     this.singlyLinkedListFormGroup.reset({});
   }
 
@@ -94,11 +120,34 @@ export class LinkedListComponent implements OnInit {
     ) {
       return;
     }
-    this.singlyLinkedList.addAfter(data, index);
+    try {
+      this.singlyLinkedList.addAfter(data, index);
+      this.loggerService.log(
+        'singlyLinkedList',
+        `data: ${data} was added after index: ${index}`
+      );
+    } catch (error) {
+      this.errorMessage = error.message;
+    }
     this.singlyLinkedListFormGroup.reset({});
   }
 
-  public remove() {}
+  public remove() {
+    const index = this.singlyLinkedListFormGroup.get('index').value;
+    if (!this.validatePresence(index, 'Index')) {
+      return;
+    }
+    try {
+      this.singlyLinkedList.remove(index);
+      this.loggerService.log(
+        'singlyLinkedList',
+        `index: ${index} was removed from the list.`
+      );
+    } catch (error) {
+      this.errorMessage = error.message;
+    }
+    this.singlyLinkedListFormGroup.reset({});
+  }
 
   private validatePresence(item: string, itemType: string): boolean {
     if (!item || !item.length) {
