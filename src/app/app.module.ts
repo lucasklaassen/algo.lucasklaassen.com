@@ -9,6 +9,7 @@ import { SinglyLinkedListComponent } from './data-structures/linked-lists/singly
 import { LoggerComponent } from './shared/logger/logger.component';
 import { LinkedListsComponent } from './data-structures/linked-lists/linked-lists.component';
 import { DoublyLinkedListComponent } from './data-structures/linked-lists/doubly-linked-list/doubly-linked-list.component';
+import { StackComponent } from './data-structures/stack/stack.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { DoublyLinkedListComponent } from './data-structures/linked-lists/doubly
     LinkedListsComponent,
     SinglyLinkedListComponent,
     DoublyLinkedListComponent,
+    StackComponent,
     LoggerComponent,
   ],
   imports: [

@@ -1,2 +1,6 @@
 /* Importing Bootstrap SCSS file. */
+.clickable {
+  cursor: pointer;
+}
+
 @import "~bootstrap/scss/bootstrap";

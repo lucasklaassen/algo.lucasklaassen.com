@@ -1,1 +1,1 @@
-export type TDataStructure = 'singlyLinkedList' | 'doublyLinkedList';
+export type TDataStructure = 'singlyLinkedList' | 'doublyLinkedList' | 'stack';

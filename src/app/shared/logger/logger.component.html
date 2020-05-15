@@ -4,10 +4,10 @@
       <p class="m-0">Results:</p>
       <button (click)="clearResults()" class="btn btn-info">Clear</button>
     </div>
-    <ol class="m-0 p-3">
-      <li class="m-2" *ngFor="let result of results">
+    <ul class="m-0 p-3">
+      <li class="m-2" *ngFor="let result of results.reverse()">
         {{ result }}
       </li>
-    </ol>
+    </ul>
   </div>
 </div>

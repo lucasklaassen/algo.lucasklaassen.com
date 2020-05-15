@@ -1,0 +1,62 @@
+<h3>Stack</h3>
+<span class="clickable text-primary" (click)="isHidden = !isHidden">Toggle Description</span>
+<p class="mt-3" [ngbCollapse]="isHidden">This data structure stores nodes on top of each other as if they are living on
+  a pile. You
+  can only view and remove
+  the last item on the pile just like real life. All actions use constant time, however since we've used a singly linked
+  list
+  to implement this stack, the insert and remove actions require new allocation of memory. You can also use an array to
+  implement this data structure which may have better overall performance. You can use a simple algorthim to double the
+  size of the array once the amount of items in the stack take up the full size of the current array. Then when items
+  are being removed, you can remove a quarter of space once the array is storing half of it's capacity. This uses
+  constant amortized time, which means that overall it will take constant time with a few actions taking linear time to
+  do the reallocation of memory.</p>
+
+<div class="d-flex flex-row w-100 mt-4">
+  <div class="w-50 d-flex justify-content-center">
+    <ul class="list-group w-50">
+      <li *ngFor="let node of nodes(); let i = index;"
+        class="list-group-item d-flex justify-content-between align-items-center">
+        {{ node.data }}
+        <span *ngIf="i === 0" class="badge badge-primary badge-pill mx-4">top</span>
+        <svg class="bi bi-arrow-down-short" width="2em" height="2em" viewBox="0 0 16 16" fill="currentColor"
+          xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd"
+            d="M4.646 7.646a.5.5 0 01.708 0L8 10.293l2.646-2.647a.5.5 0 01.708.708l-3 3a.5.5 0 01-.708 0l-3-3a.5.5 0 010-.708z"
+            clip-rule="evenodd" />
+          <path fill-rule="evenodd" d="M8 4.5a.5.5 0 01.5.5v5a.5.5 0 01-1 0V5a.5.5 0 01.5-.5z" clip-rule="evenodd" />
+        </svg>
+      </li>
+      <li class="list-group-item d-flex justify-content-center align-items-center">
+        <span class="badge badge-danger badge-pill">next: null</span>
+      </li>
+    </ul>
+  </div>
+
+  <form [formGroup]="stackFormGroup" class="mt-4 w-50">
+    <ngb-alert *ngIf="errorMessage && errorMessage.length" type="danger" [dismissible]="false">
+      {{ errorMessage }}
+    </ngb-alert>
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="inputData">Data</label>
+        <input formControlName="data" type="text" class="form-control" id="inputData">
+      </div>
+    </div>
+    <div class="d-flex justify-content-between align-items-center">
+      <div class="d-flex flex-column align-items-center">
+        <button (click)="peekTop()" class="btn btn-success">Peek Top</button>
+        <p class="m-0">O(1)</p>
+      </div>
+      <div class="d-flex flex-column align-items-center">
+        <button (click)="insert()" class="btn btn-primary">Insert</button>
+        <p class="m-0">O(1)</p>
+      </div>
+      <div class="d-flex flex-column align-items-center">
+        <button (click)="remove()" class="btn btn-danger">Remove</button>
+        <p class="m-0">O(1)</p>
+      </div>
+    </div>
+    <app-logger type="stack"></app-logger>
+  </form>
+</div>
