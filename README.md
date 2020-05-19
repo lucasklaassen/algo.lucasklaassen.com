@@ -2,6 +2,8 @@
 
 [Live Demo](https://algo.lucasklaassen.com)
 
+![Live Demo Image Of Stack](https://i.imgur.com/T54j5XK.png)
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.5.
 
 ## Development server

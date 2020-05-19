@@ -1,1 +1,5 @@
-export type TDataStructure = 'singlyLinkedList' | 'doublyLinkedList' | 'stack';
+export type TDataStructure =
+  | 'singlyLinkedList'
+  | 'doublyLinkedList'
+  | 'stack'
+  | 'queue';

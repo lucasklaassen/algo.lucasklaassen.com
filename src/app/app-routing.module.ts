@@ -5,6 +5,7 @@ import { SinglyLinkedListComponent } from './data-structures/linked-lists/singly
 import { LinkedListsComponent } from './data-structures/linked-lists/linked-lists.component';
 import { DoublyLinkedListComponent } from './data-structures/linked-lists/doubly-linked-list/doubly-linked-list.component';
 import { StackComponent } from './data-structures/stack/stack.component';
+import { QueueComponent } from './data-structures/queue/queue.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'data-structures', pathMatch: 'full' },
@@ -19,6 +20,7 @@ const routes: Routes = [
     component: DoublyLinkedListComponent,
   },
   { path: 'data-structures/stack', component: StackComponent },
+  { path: 'data-structures/queue', component: QueueComponent },
 ];
 
 @NgModule({

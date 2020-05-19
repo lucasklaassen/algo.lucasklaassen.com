@@ -10,6 +10,7 @@ import { LoggerComponent } from './shared/logger/logger.component';
 import { LinkedListsComponent } from './data-structures/linked-lists/linked-lists.component';
 import { DoublyLinkedListComponent } from './data-structures/linked-lists/doubly-linked-list/doubly-linked-list.component';
 import { StackComponent } from './data-structures/stack/stack.component';
+import { QueueComponent } from './data-structures/queue/queue.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { StackComponent } from './data-structures/stack/stack.component';
     SinglyLinkedListComponent,
     DoublyLinkedListComponent,
     StackComponent,
+    QueueComponent,
     LoggerComponent,
   ],
   imports: [
