@@ -152,8 +152,10 @@ export class SinglyLinkedList<T> {
 
   public forEach(callback: Function): void {
     let currentNode = this.first;
+    let index = 0;
     while (currentNode !== null) {
-      callback(currentNode);
+      callback(currentNode, index);
+      index++;
       currentNode = currentNode.next;
     }
   }

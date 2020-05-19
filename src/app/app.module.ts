@@ -11,6 +11,7 @@ import { LinkedListsComponent } from './data-structures/linked-lists/linked-list
 import { DoublyLinkedListComponent } from './data-structures/linked-lists/doubly-linked-list/doubly-linked-list.component';
 import { StackComponent } from './data-structures/stack/stack.component';
 import { QueueComponent } from './data-structures/queue/queue.component';
+import { HashTableComponent } from './data-structures/hash-table/hash-table.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { QueueComponent } from './data-structures/queue/queue.component';
     DoublyLinkedListComponent,
     StackComponent,
     QueueComponent,
+    HashTableComponent,
     LoggerComponent,
   ],
   imports: [

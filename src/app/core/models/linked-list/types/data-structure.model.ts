@@ -2,4 +2,5 @@ export type TDataStructure =
   | 'singlyLinkedList'
   | 'doublyLinkedList'
   | 'stack'
-  | 'queue';
+  | 'queue'
+  | 'hashTable';
