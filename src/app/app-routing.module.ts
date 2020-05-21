@@ -7,6 +7,7 @@ import { DoublyLinkedListComponent } from './data-structures/linked-lists/doubly
 import { StackComponent } from './data-structures/stack/stack.component';
 import { QueueComponent } from './data-structures/queue/queue.component';
 import { HashTableComponent } from './data-structures/hash-table/hash-table.component';
+import { BinarySearchTreeComponent } from './data-structures/binary-search-tree/binary-search-tree.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'data-structures', pathMatch: 'full' },
@@ -23,6 +24,10 @@ const routes: Routes = [
   { path: 'data-structures/stack', component: StackComponent },
   { path: 'data-structures/queue', component: QueueComponent },
   { path: 'data-structures/hash-table', component: HashTableComponent },
+  {
+    path: 'data-structures/binary-search-tree',
+    component: BinarySearchTreeComponent,
+  },
 ];
 
 @NgModule({

@@ -12,6 +12,8 @@ import { DoublyLinkedListComponent } from './data-structures/linked-lists/doubly
 import { StackComponent } from './data-structures/stack/stack.component';
 import { QueueComponent } from './data-structures/queue/queue.component';
 import { HashTableComponent } from './data-structures/hash-table/hash-table.component';
+import { BinaryNodeComponent } from './shared/binary-node/binary-node.component';
+import { BinarySearchTreeComponent } from './data-structures/binary-search-tree/binary-search-tree.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,9 @@ import { HashTableComponent } from './data-structures/hash-table/hash-table.comp
     StackComponent,
     QueueComponent,
     HashTableComponent,
+    BinarySearchTreeComponent,
     LoggerComponent,
+    BinaryNodeComponent,
   ],
   imports: [
     BrowserModule,

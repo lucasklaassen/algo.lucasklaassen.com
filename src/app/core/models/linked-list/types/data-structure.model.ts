@@ -3,4 +3,5 @@ export type TDataStructure =
   | 'doublyLinkedList'
   | 'stack'
   | 'queue'
-  | 'hashTable';
+  | 'hashTable'
+  | 'binarySearchTree';

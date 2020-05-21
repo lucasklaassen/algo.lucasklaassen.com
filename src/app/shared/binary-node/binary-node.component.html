@@ -1,0 +1,14 @@
+<div [ngClass]="{'invisible': !root}" #rootRef class="d-flex align-items-center justify-content-center node m-4"><span
+    *ngIf="root">{{root.key}}</span>
+</div>
+<div *ngIf="root" #line class="line position-absolute"></div>
+<div *ngIf="root" class="d-flex root flex-column align-items-center">
+  <div class="d-flex flex-row">
+    <app-binary-node class="w-100 d-flex align-items-center flex-column" *ngIf="currentPayload" [root]="root.left"
+      [parentPayload]="currentPayload">
+    </app-binary-node>
+    <app-binary-node class="w-100 d-flex align-items-center flex-column" *ngIf="currentPayload" [root]="root.right"
+      [parentPayload]="currentPayload">
+    </app-binary-node>
+  </div>
+</div>
