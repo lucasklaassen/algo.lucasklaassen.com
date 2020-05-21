@@ -106,7 +106,7 @@ export class BinarySearchTree<V> {
 
   private validateKey(key: number): void {
     if (key === null || key === undefined || isNaN(+key)) {
-      throw new TypeError('Key is not defined.');
+      throw new TypeError('Key must be a number.');
     }
   }
 }
