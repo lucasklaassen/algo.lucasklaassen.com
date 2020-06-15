@@ -85,6 +85,40 @@ export class GraphComponent implements OnInit {
     this.graphFormGroup.reset({});
   }
 
+  public bfs(): void {
+    const vertex = this.graphFormGroup.get('vertex').value;
+    if (!this.validatePresence(vertex, 'Vertex')) {
+      return;
+    }
+    try {
+      const bfsVerticies = this.graph.bfs(vertex);
+      this.loggerService.log(
+        'graph',
+        `${bfsVerticies} is the bfs return for: ${vertex}.`
+      );
+    } catch (error) {
+      this.errorMessage = error.message;
+    }
+    this.graphFormGroup.reset({});
+  }
+
+  public dfs(): void {
+    const vertex = this.graphFormGroup.get('vertex').value;
+    if (!this.validatePresence(vertex, 'Vertex')) {
+      return;
+    }
+    try {
+      const dfsVerticies = this.graph.dfs(vertex);
+      this.loggerService.log(
+        'graph',
+        `${dfsVerticies} is the dfs return for: ${vertex}.`
+      );
+    } catch (error) {
+      this.errorMessage = error.message;
+    }
+    this.graphFormGroup.reset({});
+  }
+
   private validatePresence(item: string, itemType: string): boolean {
     if (!item || !item.length) {
       this.errorMessage = `${itemType} cannot be empty.`;

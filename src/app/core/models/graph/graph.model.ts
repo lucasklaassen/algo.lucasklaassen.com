@@ -1,18 +1,11 @@
-// undirected graph
-// nodes can link to eachother
-// directed graph
-// node can only be linked to nodes that are not linked to them
-
-// Verticies and Edges
-// Vertex = Node of a graph
-// Edge = The connection between 2 Verticies
-
-// You can use an es6 Map to store the vertices and the edges associated to them.
-
 export class Graph<K> {
   public rootVerticies: Array<K>;
   public verticies: Map<K, Array<K>>;
+  private ccVisited: any;
   private dfsVisited: any;
+  private dfsVerticies: Array<K>;
+  private bfsVisited: any;
+  private bfsVerticies: Array<K>;
 
   constructor() {
     this.verticies = new Map<K, Array<K>>();
@@ -40,9 +33,9 @@ export class Graph<K> {
 
   public findConnectedComponents(): void {
     this.rootVerticies = [];
-    this.dfsVisited = {};
+    this.ccVisited = {};
     this.verticies.forEach((_, vertex: any) => {
-      if (!(vertex in this.dfsVisited)) {
+      if (!(vertex in this.ccVisited)) {
         this.rootVerticies.push(vertex);
         let verticiesToMarkAsVisited = [];
         this.verticies.get(vertex).forEach((currentVertex) => {
@@ -50,16 +43,56 @@ export class Graph<K> {
         });
         while (verticiesToMarkAsVisited.length) {
           const currentVertex = verticiesToMarkAsVisited.pop();
-          if (!(currentVertex in this.dfsVisited)) {
+          if (!(currentVertex in this.ccVisited)) {
             if (currentVertex !== vertex) {
-              this.dfsVisited[currentVertex] = true;
+              this.ccVisited[currentVertex] = true;
               this.verticies.get(currentVertex).forEach((nextVertex) => {
                 verticiesToMarkAsVisited.push(nextVertex);
               });
             }
           }
         }
-        this.dfsVisited[vertex] = true;
+        this.ccVisited[vertex] = true;
+      }
+    });
+  }
+
+  public bfs(vertex: K): any {
+    this.bfsVisited = {};
+    this.bfsVerticies = [];
+    let queue = [];
+    queue.unshift(vertex);
+
+    while (queue.length) {
+      const currentVertex = queue.pop();
+      if (!(currentVertex in this.bfsVisited)) {
+        this.bfsVisited[currentVertex] = true;
+        this.bfsVerticies.push(currentVertex);
+        const neighbours = this.verticies.get(currentVertex);
+        neighbours.forEach((nextVertex: any) => {
+          queue.unshift(nextVertex);
+        });
+      }
+    }
+
+    return this.bfsVerticies;
+  }
+
+  public dfs(vertex: K): any {
+    this.dfsVisited = {};
+    this.dfsVerticies = [];
+    this._dfs(vertex, this.dfsVisited);
+    return this.dfsVerticies;
+  }
+
+  private _dfs(vertex: K, visited: any): void {
+    visited[vertex] = true;
+    this.dfsVerticies.push(vertex);
+    const neighbours = this.verticies.get(vertex);
+
+    neighbours.forEach((neighbour: any) => {
+      if (!(neighbour in visited)) {
+        this._dfs(neighbour, visited);
       }
     });
   }
