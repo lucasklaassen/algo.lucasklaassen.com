@@ -1,0 +1,17 @@
+.node {
+  width: 50px;
+  height: 50px;
+  background-color: #212529;
+  border-radius: 50%;
+
+  span {
+    color: white;
+  }
+}
+
+.line {
+  position: absolute;
+  width: 3px;
+  background-color: #007aff;
+  z-index: -1;
+}

@@ -1,0 +1,12 @@
+<div [ngClass]="{'invisible': !currentVertex}" #rootRef
+  class="d-flex align-items-center justify-content-center node m-4"><span *ngIf="currentVertex">{{currentVertex}}</span>
+</div>
+<div *ngIf="currentVertex" #line class="line position-absolute"></div>
+<div *ngIf="currentVertex" class="d-flex root flex-column align-items-center">
+  <div class="d-flex flex-row">
+    <app-graph-node *ngFor="let vertex of currentVerticies" class="w-100 d-flex align-items-center flex-column"
+      [currentVertex]="vertex" [verticies]="verticies" [visitedVerticies]="getNewVisitedVerticies(vertex)"
+      [parentPayload]="currentPayload">
+    </app-graph-node>
+  </div>
+</div>

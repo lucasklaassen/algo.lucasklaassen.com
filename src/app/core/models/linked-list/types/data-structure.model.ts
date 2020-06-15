@@ -4,4 +4,5 @@ export type TDataStructure =
   | 'stack'
   | 'queue'
   | 'hashTable'
-  | 'binarySearchTree';
+  | 'binarySearchTree'
+  | 'graph';

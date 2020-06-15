@@ -14,6 +14,8 @@ import { QueueComponent } from './data-structures/queue/queue.component';
 import { HashTableComponent } from './data-structures/hash-table/hash-table.component';
 import { BinaryNodeComponent } from './shared/binary-node/binary-node.component';
 import { BinarySearchTreeComponent } from './data-structures/binary-search-tree/binary-search-tree.component';
+import { GraphComponent } from './data-structures/graph/graph.component';
+import { GraphNodeComponent } from './shared/graph-node/graph-node.component';
 
 @NgModule({
   declarations: [
@@ -26,8 +28,10 @@ import { BinarySearchTreeComponent } from './data-structures/binary-search-tree/
     QueueComponent,
     HashTableComponent,
     BinarySearchTreeComponent,
+    GraphComponent,
     LoggerComponent,
     BinaryNodeComponent,
+    GraphNodeComponent,
   ],
   imports: [
     BrowserModule,
