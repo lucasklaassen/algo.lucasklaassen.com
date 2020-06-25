@@ -16,6 +16,7 @@ import { BinaryNodeComponent } from './shared/binary-node/binary-node.component'
 import { BinarySearchTreeComponent } from './data-structures/binary-search-tree/binary-search-tree.component';
 import { GraphComponent } from './data-structures/graph/graph.component';
 import { GraphNodeComponent } from './shared/graph-node/graph-node.component';
+import { MinHeapComponent } from './data-structures/min-heap/min-heap.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { GraphNodeComponent } from './shared/graph-node/graph-node.component';
     LoggerComponent,
     BinaryNodeComponent,
     GraphNodeComponent,
+    MinHeapComponent,
   ],
   imports: [
     BrowserModule,

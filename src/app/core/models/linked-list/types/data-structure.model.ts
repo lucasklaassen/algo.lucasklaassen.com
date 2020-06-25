@@ -5,4 +5,5 @@ export type TDataStructure =
   | 'queue'
   | 'hashTable'
   | 'binarySearchTree'
-  | 'graph';
+  | 'graph'
+  | 'minHeap';

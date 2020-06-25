@@ -9,6 +9,7 @@ import { QueueComponent } from './data-structures/queue/queue.component';
 import { HashTableComponent } from './data-structures/hash-table/hash-table.component';
 import { BinarySearchTreeComponent } from './data-structures/binary-search-tree/binary-search-tree.component';
 import { GraphComponent } from './data-structures/graph/graph.component';
+import { MinHeapComponent } from './data-structures/min-heap/min-heap.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'data-structures', pathMatch: 'full' },
@@ -32,6 +33,10 @@ const routes: Routes = [
   {
     path: 'data-structures/graph',
     component: GraphComponent,
+  },
+  {
+    path: 'data-structures/min-heap',
+    component: MinHeapComponent,
   },
 ];
 
